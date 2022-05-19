@@ -1,7 +1,9 @@
 from cube import RubiksCube
 
-cube = RubiksCube(n=3)
+cube = RubiksCube(state='wwwwooooggggrrrrbbbbyyyy')
 cube.show()
+
 print('-------')
+
 cube.shuffle()
 cube.show()

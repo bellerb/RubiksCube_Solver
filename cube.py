@@ -20,7 +20,7 @@ class RubiksCube:
         """
         if state is None:
             self.n = n
-            self.colours = ['w', 'o', 'g', 'r', 'b', 'y']
+            self.colours = colours
             self.reset()
         else:
             self.n = int((len(state) / 6) ** (.5))
@@ -41,6 +41,14 @@ class RubiksCube:
         Output: None
         """
         self.cube = [[[c for x in range(self.n)] for y in range(self.n)] for c in self.colours]
+
+    def stringify(self):
+        """
+        Input: None
+        Description: Create string representation of the current state of the cube
+        Output: string - representing the cube current state
+        """
+        return ''.join([i for r in self.cube for s in r for i in s])
 
     def shuffle(self, l_rot = 5, u_rot = 100):
         """

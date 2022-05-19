@@ -4,6 +4,11 @@ from cube import RubiksCube
 
 class TestCube(unittest.TestCase):
     def test_cube_init(self):
+        """
+        Input: None
+        Description: test to make sure the cube initializes properly
+        Output: None
+        """
         cube = RubiksCube(state='wwwwooooggggrrrrbbbbyyyy')
         self.assertEqual(
             [
@@ -62,6 +67,11 @@ class TestCube(unittest.TestCase):
             ], cube.cube)
 
     def test_horizontal(self):
+        """
+        Input: None
+        Description: test to make sure horizontal rotations of cube are working
+        Output: None
+        """
         cube = RubiksCube(n=2)
         cube.horizontal_twist(1, 0) #Down or D'
         self.assertEqual(
@@ -177,6 +187,11 @@ class TestCube(unittest.TestCase):
             ], cube.cube)
 
     def test_vertical(self):
+        """
+        Input: None
+        Description: test to make sure vertical rotations of cube are working
+        Output: None
+        """
         cube = RubiksCube(n=2)
         cube.vertical_twist(1, 0) #Down or R'
         self.assertEqual(
@@ -292,6 +307,11 @@ class TestCube(unittest.TestCase):
             ], cube.cube)
 
     def test_side(self):
+        """
+        Input: None
+        Description: test to make sure side rotations of cube are working
+        Output: None
+        """
         cube = RubiksCube(n=2)
         cube.side_twist(1, 0) #Down or F'
         self.assertEqual(
@@ -406,7 +426,12 @@ class TestCube(unittest.TestCase):
                 ]
             ], cube.cube)
 
-    def test_shuffle(self):
+    def test_multi_rotate(self):
+        """
+        Input: None
+        Description: test to make sure multiple rotations of cube are working
+        Output: None
+        """
         cube = RubiksCube(n=2)
         cube.horizontal_twist(1, 0)
         cube.vertical_twist(1, 0)
