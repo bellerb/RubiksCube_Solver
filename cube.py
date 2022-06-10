@@ -15,7 +15,7 @@ class RubiksCube:
         Input: n - integer representing the width and height of the rubiks cube
                colours - list containing the first letter of ever colour you wish to use (Default = ['w', 'o', 'g', 'r', 'b', 'y']) [OPTIONAL]
                state - string representing the current state of the rubix cube (Default = None) [OPTIONAL]
-        Description: initialize the rubiks cube
+        Description: Initialize the rubiks cube
         Output: None
         """
         if state is None:
@@ -42,11 +42,33 @@ class RubiksCube:
         """
         self.cube = [[[c for x in range(self.n)] for y in range(self.n)] for c in self.colours]
 
+    def solved(self):
+        """
+        Input: None
+        Description: Determine if the cube is solved or not
+        Output: boolean representing if the cube is solved or not
+        """
+        for side in self.cube:
+            hold = []
+            check = True
+            for row in side:
+                if len(set(row)) == 1:
+                    hold.append(row[0])
+                else:
+                    check = False
+                    break
+            if check == False:
+                break
+            if len(set(hold)) > 1:
+                check = False
+                break
+        return check
+
     def stringify(self):
         """
         Input: None
         Description: Create string representation of the current state of the cube
-        Output: string - representing the cube current state
+        Output: string representing the cube current state
         """
         return ''.join([i for r in self.cube for s in r for i in s])
 
