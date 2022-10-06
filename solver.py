@@ -4,15 +4,25 @@ from tqdm import tqdm
 from cube import RubiksCube
 
 class IDA_star(object):
-    def __init__(self, heuristic, colour = 'w', max_depth = 20):
+    def __init__(self, heuristic, max_depth = 20):
+        """
+        Input: heuristic - dictionary representing the heuristic pre computed map
+               max_depth - integer representing the max depth you want your game tree to reach (default = 20) [OPTIONAL]
+        Description: Initialize the solver
+        Output: None
+        """
         self.max_depth = max_depth
-        self.colour = colour
         self.threshold = max_depth
         self.min_threshold = None
         self.heuristic = heuristic
         self.moves = []
 
     def run(self, state):
+        """
+        Input: state - string representing the current state of the cube
+        Description: solve the rubix cube
+        Output: list containing the moves taken to solve the cube
+        """
         while True:
             status = self.search(state, 1)
             if status: return self.moves
@@ -21,6 +31,12 @@ class IDA_star(object):
         return []
 
     def search(self, state, g_score):
+        """
+        Input: state - string representing the current state of the cube
+               g_score - integer representing the cost to reach the current node
+        Description: search the game tree using the IDA* algorithm
+        Output: boolean representing if the cube has been solved
+        """
         cube = RubiksCube(state=state)
         if cube.solved():
             return True
@@ -60,6 +76,14 @@ class IDA_star(object):
         return False
 
 def build_heuristic_db(state, actions, max_moves = 20, heuristic = None):
+    """
+    Input: state - string representing the current state of the cube
+           actions -list containing tuples representing the possible actions that can be taken
+           max_moves - integer representing the max amount of moves alowed (default = 20) [OPTIONAL]
+           heuristic - dictionary containing current heuristic map (default = None) [OPTIONAL]
+    Description: create a heuristic map for determining the best path for solving a rubiks cube
+    Output: dictionary containing the heuristic map
+    """
     if heuristic is None:
         heuristic = {state: 0}
     que = [(state, 0)]
