@@ -34,3 +34,4 @@ python3 main.py
 step 6: type in the action you wish to perform
 
 # Write Up
+* https://medium.com/@bellerb/rubiks-cube-solver-96fa6c56fbe4
