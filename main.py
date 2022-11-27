@@ -56,3 +56,4 @@ for m in moves:
     elif m[0] == 's':
         cube.side_twist(m[1], m[2])
 cube.show()
+os.remove(HEURISTIC_FILE)
